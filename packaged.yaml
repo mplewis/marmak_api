@@ -8,34 +8,34 @@ Globals:
   Function:
     Timeout: 3
 Outputs:
-  HelloWorldApi:
-    Description: API Gateway endpoint URL for Prod stage for Hello World function
+  Api:
+    Description: API Gateway endpoint URL for Prod stage for ConfigurationH function
     Value:
-      Fn::Sub: https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/hello/
+      Fn::Sub: https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/configuration_h/
   HelloWorldFunction:
-    Description: Hello World Lambda Function ARN
+    Description: ConfigurationH Lambda Function ARN
     Value:
       Fn::GetAtt:
-      - HelloWorldFunction
+      - ConfigurationHFunction
       - Arn
   HelloWorldFunctionIamRole:
-    Description: Implicit IAM Role created for Hello World function
+    Description: Implicit IAM Role created for ConfigurationH function
     Value:
       Fn::GetAtt:
-      - HelloWorldFunctionRole
+      - ConfigurationHFunctionRole
       - Arn
 Resources:
-  HelloWorldFunction:
+  ConfigurationHFunction:
     Properties:
-      CodeUri: s3://mplewis-sls-rb/da43c4384b87edc468010e50b9d64b21
+      CodeUri: s3://mplewis-sls-rb/456887311c70eef9f039ac0b163a2403
       Environment:
         Variables:
           PARAM1: VALUE
       Events:
-        HelloWorld:
+        ConfigurationH:
           Properties:
-            Method: get
-            Path: /hello
+            Method: post
+            Path: /configuration_h
           Type: Api
       Handler: app.lambda_handler
       Runtime: ruby2.5

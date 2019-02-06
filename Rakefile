@@ -25,14 +25,15 @@ def bucket
   read '.s3_bucket'
 end
 
-task :serve do
+task :bundle do
   run <<~CMD
-    find "#{SRC_DIR}" |
-    entr -r -s 'sam build; sam local start-api'
+    bundle install
+    --deployment
+    --path "#{SRC_DIR}/vendor/bundle"
   CMD
 end
 
-task :package do
+task package: :bundle do
   run 'sam build'
   run <<~CMD
     sam package

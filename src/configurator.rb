@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'active_support/core_ext/hash'
-require 'ERB'
+require 'erb'
 require 'yaml'
 require_relative 'lib/config_dsl'
 
@@ -15,6 +15,7 @@ class Configurator
   TEMPLATE = File.open(TEMPLATE_PATH).read
   GENERATOR = ERB.new TEMPLATE
   OPTIONS = YAML.load_file(OPTIONS_PATH).deep_symbolize_keys.freeze
+  DEFAULTS = OPTIONS.map { |k, v| [k, v[:default]] }.select { |_, v| v }.to_h
 
   MANDATORY = OPTIONS.select { |k, v| v[:mandatory] }.map(&:first).freeze
   BOOLEAN = OPTIONS.select { |k, v| v[:type] == 'boolean' }.map(&:first).freeze
@@ -36,7 +37,7 @@ class Configurator
   end
 
   def initialize(params)
-    @params = params.to_h.symbolize_keys
+    @params = DEFAULTS.merge(params).to_h.symbolize_keys
   end
   private_class_method :new
 

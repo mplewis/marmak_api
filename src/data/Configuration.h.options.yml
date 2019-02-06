@@ -2,7 +2,6 @@ board_name:
   type: select
   desc: Printer Board
   mandatory: true
-  default: CR10
   options:
     CR10: CR-10
     CR10_MINI: CR-10 Mini
@@ -72,13 +71,13 @@ ezabl_outside_grid_compensation:
 
 x_probe_offset_from_extruder:
   type: integer
-  desc: Custom probe X offset from extruder
-  default: ""
+  desc: "Custom probe X offset from extruder (-: left, +: right)"
+  default: 0
 
 y_probe_offset_from_extruder:
   type: integer
-  desc: Custom probe Y offset from extruder
-  default: ""
+  desc: "Custom probe Y offset from extruder (-: front, +: behind)"
+  default: 0
 
 custom_esteps_value:
   type: integer
@@ -159,13 +158,13 @@ home_adjust:
 
 x_home_location:
   type: integer
-  desc: Custom X home offset
-  default: -10
+  desc: Custom X home offset (use negative values)
+  default: 0
 
 y_home_location:
   type: integer
-  desc: Custom Y home offset
-  default: -10
+  desc: Custom Y home offset (use negative values)
+  default: 0
 
 linear_advance:
   type: boolean
