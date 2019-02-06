@@ -1,0 +1,79 @@
+#ifndef CONFIGURATION_H
+#define CONFIGURATION_H
+#define CONFIGURATION_H_VERSION 010109
+
+// Board selection
+<%= defcontents :board_name %>
+
+// EZOUT: Filament Runout sensor
+<%= defif :ezout_enable %>
+
+// EZABL: Auto Bed Leveling hardware
+<%= defvalif :ezabl_probe_mount %>
+<%= defval :ezabl_points, :ezabl_probe_edge %>
+<%= defif :ezabl_outside_grid_compensation,
+          :ezabl_fastprobe,
+          :babystep_offset,
+          :probing_motors_off,
+          :heaters_on_during_probing %>
+
+// Custom probe settings
+<%= defvalif :x_probe_offset_from_extruder,
+             :y_probe_offset_from_extruder %>
+
+// TH3D extras
+
+// Custom extruder steps
+<%= defif :custom_esteps %>
+<%= defval :custom_esteps_value %>
+
+// Titan extruder support
+<%= defif :titan_extruder %>
+<%= defval :titan_extruder_steps %>
+
+// Custom extruder steps
+<%= defval :dual_hotend_x_distance %>
+
+// Thermistor settings
+<%= defcontentsif :thermistor %>
+
+// Bed settings
+<%= defif :ac_bed,
+          :pidbed_disable %>
+
+// Misc settings
+<%= defif :fan_fix %>
+<%= defvalif :user_printer_name %>
+
+// Boot screen options
+<%= defcontentsif :boot_screen %>
+
+// Advanced features
+
+// Manual mesh leveling
+<%= defif :manual_mesh_leveling %>
+
+// Power loss recovery
+<%= defif :power_loss_recovery %>
+
+// Custom XY home offsets
+<%= defif :home_adjust %>
+<%= defval :x_home_location,
+           :y_home_location %>
+
+// Linear advance pressure control
+<%= defif :linear_advance %>
+<%= defval :linear_advance_k %>
+
+// New motion control options
+<%= defif :new_jerk_control,
+          :new_acceleration_control %>
+
+// Language support
+<%= defvalraw :lcd_language %>
+
+#include "Configuration_backend.h"
+
+#define UNIFIED_VERSION "TH3D U1.R2.2"
+
+#endif

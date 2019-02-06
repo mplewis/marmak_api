@@ -1,0 +1,230 @@
+board_name:
+  type: select
+  desc: Printer Board
+  mandatory: true
+  default: CR10
+  options:
+    CR10: CR-10
+    CR10_MINI: CR-10 Mini
+    CR10_S4: CR-10 S4
+    CR10_S5: CR-10 S5
+
+ezout_enable:
+  type: boolean
+  desc: Enable EZOut V1/V2 filament runout sensor
+  enableVerb: Enable EZOut support
+  default: false
+
+ezabl_probe_mount:
+  type: select
+  desc: EZABL probe mount
+  default: null
+  options:
+    null: No EZABL probe
+    CR10_VOLCANO: CR-10 Volcano
+    CR10_V6HEAVYDUTY: CR-10 V6 Heavy Duty
+    CR10_OEM: CR-10 OEM
+    CR10_FANG: CR-10 Fang
+    TM3DAERO: TM3D Aero
+    TM3DAERO_EXTENDED: TM3D Aero (Extended)
+    PETSFANG: Petsfang (right-mounted version)
+    CUSTOM_PROBE: Custom Probe
+
+ezabl_points:
+  type: integer
+  desc: EZABL points per edge (use odd numbers)
+  default: 5
+
+ezabl_probe_edge:
+  type: integer
+  desc: EZABL probe distance in-from-edge (mm)
+  default: 15
+
+ezabl_fastprobe:
+  type: boolean
+  desc: Use Fast Probe to speed up probing
+  enableVerb: Use Fast Probe
+  default: false
+
+babystep_offset:
+  type: boolean
+  desc: Allow babystepping to modify Z offset
+  enableVerb: Allow
+  default: false
+
+probing_motors_off:
+  type: boolean
+  desc: Disable XYE motors during probing
+  enableVerb: Disable
+  default: false
+
+heaters_on_during_probing:
+  type: boolean
+  desc: Keep heaters on during probing
+  enableVerb: Keep heaters on
+  default: false
+
+ezabl_outside_grid_compensation:
+  type: boolean
+  desc: EZABL compensate tilt outside probe area
+  enableVerb: Compensate
+  default: true
+
+x_probe_offset_from_extruder:
+  type: integer
+  desc: Custom probe X offset from extruder
+  default: ""
+
+y_probe_offset_from_extruder:
+  type: integer
+  desc: Custom probe Y offset from extruder
+  default: ""
+
+custom_esteps_value:
+  type: integer
+  desc: Extruder steps (E-steps)
+  default: 999
+
+titan_extruder_steps:
+  type: integer
+  desc: Extruder steps for E3D or TH3D Titan Extruder
+  default: 463
+
+dual_hotend_x_distance:
+  type: float
+  desc: Distance between dual hotend tips (mm)
+  default: 18.0
+
+thermistor:
+  type: select
+  desc: Custom thermistor
+  default: null
+  options:
+    null: Stock thermistor
+    V6_HOTEND: E3D V6 hotend
+    TH3D_HOTEND_THERMISTOR: TH3D Tough Hotend or any TH3D hotend thermistor
+    TH3D_BED_THERMISTOR: TH3D bed thermistor
+    KEENOVO_TEMPSENSOR: Keenovo SSR with Keenovo temp sensor
+
+ac_bed:
+  type: boolean
+  desc: Disable heated bed (for use with AC bed and Keenovo standalone controller)
+  enableVerb: Disable
+  default: false
+
+pidbed_disable:
+  type: boolean
+  desc: Use bang-bang heated bed control, not PID
+  enableVerb: Use bang-bang
+  default: false
+
+fan_fix:
+  type: boolean
+  desc: Fix 5015 fan whine under 100% speed
+  enableVerb: Enable fix
+  default: false
+
+user_printer_name:
+  type: string
+  desc: Custom printer name
+  default: null
+
+boot_screen:
+  type: select
+  desc: Custom boot screen
+  default: null
+  options:
+    null: TH3D
+    TM3D_BOOT: TinyMachines
+    ENDER_BOOT: Ender
+    DISABLE_BOOT: Disable boot screen
+
+manual_mesh_leveling:
+  type: boolean
+  desc: Manual mesh leveling (without probe)
+  enableVerb: Enable
+  default: false
+
+power_loss_recovery:
+  type: boolean
+  desc: Power loss recovery (save layer state to SD card)
+  enableVerb: Enable
+  default: false
+
+home_adjust:
+  type: boolean
+  desc: Adjust XY home offsets from defaults
+  enableVerb: Enable custom offsets
+  default: false
+
+x_home_location:
+  type: integer
+  desc: Custom X home offset
+  default: -10
+
+y_home_location:
+  type: integer
+  desc: Custom Y home offset
+  default: -10
+
+linear_advance:
+  type: boolean
+  desc: Linear advance
+  enableVerb: Enable linear advance
+  default: false
+
+linear_advance_k:
+  type: float
+  desc: Linear advance K value
+  default: 0
+
+new_jerk_control:
+  type: boolean
+  desc: New motion control for jerk
+  enableVerb: Enable new jerk
+  default: false
+
+new_acceleration_control:
+  type: boolean
+  desc: New motion control for acceleration
+  enableVerb: Enable new acceleration
+  default: false
+
+lcd_language:
+  type: select
+  desc: LCD Language
+  default: en
+  options:
+    an: Aragonese
+    bg: Bulgarian
+    ca: Catalan
+    cn: Chinese
+    cz: Czech
+    cz_utf8: Czech (UTF-8)
+    de: German
+    el: Greek
+    el-gr: Greek (Greece)
+    en: English
+    es: Spanish
+    eu: Basque-Euskera
+    fi: Finnish
+    fr: French
+    fr_utf8: French (UTF-8)
+    gl: Galician
+    hr: Croatian
+    it: Italian
+    kana: Japanese
+    kana_utf8: Japanese (UTF-8)
+    nl: Dutch
+    pl: Polish
+    pt: Portugese
+    pt_utf8: Portugese (UTF-8)
+    pt-br: Portugese (Brazilian)
+    pt-br_utf8: Portugese (Brazilian, UTF-8)
+    ru: Russian
+    sk_utf8: Slovak (UTF-8)
+    tr: Turkish
+    uk: Ukranian
+    zh_CN: Chinese (Simplified)
+    zh_TW: Chinese (Taiwan)
+    test: Test
