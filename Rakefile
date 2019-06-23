@@ -26,11 +26,7 @@ def bucket
 end
 
 task :bundle do
-  run <<~CMD
-    bundle install
-    --deployment
-    --path "#{SRC_DIR}/vendor/bundle"
-  CMD
+  run './bundle.sh'
 end
 
 task package: :bundle do
@@ -43,7 +39,7 @@ task package: :bundle do
   CMD
 end
 
-task :deploy do
+task deploy: :package do
   run <<~CMD
     aws cloudformation deploy
       --template-file packaged.yaml

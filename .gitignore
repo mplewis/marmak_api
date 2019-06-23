@@ -1,3 +1,4 @@
 .aws-sam
+.bundle/config
 src/vendor/bundle
 packaged.yaml
