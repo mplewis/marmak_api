@@ -14,14 +14,15 @@ describe Configurator do
     subject { described_class.generate valid_params }
     let(:lines) { subject.split "\n" }
 
-    it 'includes the correct items' do
-      expect(subject).to include(
+    it 'includes the correct items and squishes large spaces' do
+      expect(lines).to include(
         '#define CR10',
         '#define V6_HOTEND',
         '#define LCD_LANGUAGE fr',
         '#define EZABL_POINTS 10',
         '#define HEATERS_ON_DURING_PROBING',
       )
+      expect(subject).to_not include "\n\n\n"
       expect(subject).to_not include '#define EZABL_OUTSIDE_GRID_COMPENSATION'
       expect(lines.map(&:strip)).to_not include '#define'
     end

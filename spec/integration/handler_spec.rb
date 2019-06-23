@@ -21,6 +21,7 @@ describe 'handler' do
       it 'returns a configuration' do
         expect(status).to be 200
         expect(body).to_not include 'nil'
+        puts config_h
         expect(config_lines).to include(
           '#define CONFIGURATION_H',
           '#define CR10',

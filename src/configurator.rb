@@ -33,7 +33,7 @@ class Configurator
       e.errors = discovered_errors
       raise e
     end
-    new(params).generate
+    new(params).generate.gsub(/\n\n\n+/, "\n\n")
   end
 
   def self.errors(params)
