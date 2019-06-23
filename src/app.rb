@@ -1,12 +1,20 @@
 require 'json'
 require_relative 'configurator'
 
-def errors(code, errors)
-  { statusCode: code, body: { errors: errors }.to_json }
+def respond(code, body)
+  { statusCode: code, body: body.to_json }
 end
 
-def bad_request(*e)
-  errors 400, e
+def bad_request(message)
+  respond 400, { message: message }
+end
+
+def invalid_params(message, errors)
+  respond 400, { message: message, errors: errors }
+end
+
+def success(**body)
+  respond 200, body
 end
 
 def lambda_handler(event:, context:)
@@ -18,8 +26,8 @@ def lambda_handler(event:, context:)
   begin
     output = Configurator.generate params
   rescue Configurator::InvalidParamsError => e
-    return bad_request e.message
+    return invalid_params e.message, e.errors
   end
 
-  { statusCode: 200, body: { configuration_h: output }.to_json }
+  success configuration_h: output
 end

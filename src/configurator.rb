@@ -28,7 +28,11 @@ class Configurator
 
   def self.generate(params)
     discovered_errors = errors(params)
-    raise InvalidParamsError, "Invalid params: #{discovered_errors}" unless discovered_errors.empty?
+    unless discovered_errors.empty?
+      e = InvalidParamsError.new 'Invalid params'
+      e.errors = discovered_errors
+      raise e
+    end
     new(params).generate
   end
 
@@ -88,5 +92,7 @@ class Configurator
     @params
   end
 
-  class InvalidParamsError < StandardError; end
+  class InvalidParamsError < StandardError
+    attr_accessor :errors
+  end
 end
